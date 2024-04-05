@@ -2,7 +2,7 @@
   <main>
     <!-- <slider-section />
         <slider-section2 :slideAni="slideAni" /> -->
-    <new-arrival :newAni="newAni" />
+    <new-arrival />
   </main>
 </template>
 
@@ -26,14 +26,14 @@ export default {
     const handleScroll = () => {
       console.log(window.scrollY)
       if (window.scrollY > 300) {
-        slideAni = true
+        slideAni.value = true
       } else {
-        slideAni = false
+        slideAni.value = false
       }
       if (window.scrollY > 600) {
-        newAni = true
+        newAni.value = true
       } else {
-        newAni = false
+        newAni.value = false
       }
     }
 

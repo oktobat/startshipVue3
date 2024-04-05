@@ -1,8 +1,8 @@
 <template>
   <section id="newArrival" class="row">
-    <h2 :class="{ on: newAni }">New Arrival</h2>
+    <h2 :class="{ on: true }">New Arrival</h2>
     <ul>
-      <li v-for="(item, index) in products" :key="index" :class="{ on: newAni }">
+      <li v-for="(item, index) in products" :key="index" :class="{ on: true }">
         <div class="imgbox">
           <a href="#"><img :src="item.photo" :alt="item.name" /></a>
         </div>

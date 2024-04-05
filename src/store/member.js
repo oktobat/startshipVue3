@@ -1,12 +1,10 @@
-import { defineStore } from 'pinia'
-
-export const modMember = defineStore('member', {
-  state: {
+export const modMember = {
+  state: () => ({
     oUser: [{ email: 'tsalt@hanmail.net', pw: '1234' }], // [ {email:'', pw:''} ]
     message: false,
     logined: null, // { email:"", pw:"" }
     prevPath: null
-  },
+  }),
   mutations: {
     fnRegisterUser(state, payload) {
       let findEmail = false
@@ -57,6 +55,4 @@ export const modMember = defineStore('member', {
     fnGetLogined: (state) => state.logined,
     fnGetPrevPath: (state) => state.prevPath
   }
-})
-
-export default modMember
+}

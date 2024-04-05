@@ -45,90 +45,98 @@
 </template>
 
 <script>
+import { ref, onMounted, computed } from 'vue'
 export default {
   name: 'ArtistSection',
-  data() {
-    return {
-      ani: false,
-      activeButton: '팝 (Pop)',
-      artistMenu: {
-        menu1: '팝 (Pop)',
-        menu2: '발라드 (Ballad)',
-        menu3: '힙합 (Hip-hop)',
-        menu4: '알앤비 (R&B)'
+  setup() {
+    let ani = ref(true)
+    let activeButton = ref('팝 (Pop)')
+
+    const artistMenu = {
+      menu1: '팝 (Pop)',
+      menu2: '발라드 (Ballad)',
+      menu3: '힙합 (Hip-hop)',
+      menu4: '알앤비 (R&B)'
+    }
+    const artistData = ref([
+      {
+        menu: '팝 (Pop)',
+        artistInfo: [
+          { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' }
+        ]
       },
-      artistData: [
-        {
-          menu: '팝 (Pop)',
-          artistInfo: [
-            { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '팝 크래비티', link: '#' }
-          ]
-        },
-        {
-          menu: '발라드 (Ballad)',
-          artistInfo: [
-            { artistImg: './assets/image/p_cravity.jpg', title: '발라드 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '발라드 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '발라드 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '발라드 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '발라드 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '발라드 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '발라드 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '발라드 크래비티', link: '#' }
-          ]
-        },
-        {
-          menu: '힙합 (Hip-hop)',
-          artistInfo: [
-            { artistImg: './assets/image/p_cravity.jpg', title: '힙합 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '힙합 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '힙합 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '힙합 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '힙합 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '힙합 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '힙합 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '힙합 크래비티', link: '#' }
-          ]
-        },
-        {
-          menu: '알앤비 (R&B)',
-          artistInfo: [
-            { artistImg: './assets/image/p_cravity.jpg', title: '알앤비 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '알앤비 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '알앤비 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '알앤비 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '알앤비 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '알앤비 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '알앤비 크래비티', link: '#' },
-            { artistImg: './assets/image/p_cravity.jpg', title: '알앤비 크래비티', link: '#' }
-          ]
-        }
-      ]
+      {
+        menu: '발라드 (Ballad)',
+        artistInfo: [
+          { artistImg: './assets/image/p_cravity.jpg', title: '발라드 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '발라드 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '발라드 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '발라드 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '발라드 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '발라드 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '발라드 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '발라드 크래비티', link: '#' }
+        ]
+      },
+      {
+        menu: '힙합 (Hip-hop)',
+        artistInfo: [
+          { artistImg: './assets/image/p_cravity.jpg', title: '힙합 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '힙합 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '힙합 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '힙합 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '힙합 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '힙합 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '힙합 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '힙합 크래비티', link: '#' }
+        ]
+      },
+      {
+        menu: '알앤비 (R&B)',
+        artistInfo: [
+          { artistImg: './assets/image/p_cravity.jpg', title: '알앤비 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '알앤비 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '알앤비 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '알앤비 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '알앤비 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '알앤비 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '알앤비 크래비티', link: '#' },
+          { artistImg: './assets/image/p_cravity.jpg', title: '알앤비 크래비티', link: '#' }
+        ]
+      }
+    ])
+
+    const activeArtist = computed(() => {
+      return artistData.value.find((item) => item.menu == activeButton.value)
+    })
+
+    const handleClick = (menu) => {
+      activeButton.value = menu
     }
-  },
-  computed: {
-    activeArtist() {
-      return this.artistData.find((item) => item.menu == this.activeButton)
+
+    // onMounted(
+    //   setTimeout(() => {
+    //     ani.value = true
+    //   }, 10)
+    // )
+
+    return {
+      ani,
+      activeButton,
+      artistMenu,
+      artistData,
+      activeArtist,
+      handleClick
     }
-  },
-  methods: {
-    handleClick(menu) {
-      this.activeButton = menu
-    }
-  },
-  mounted() {
-    setTimeout(() => {
-      this.ani = true
-    }, 0)
   }
 }
 </script>

@@ -1,8 +1,7 @@
 import dayjs from 'dayjs'
-import { defineStore } from 'pinia'
 
-export const modBoard = defineStore('board', {
-  state: {
+export const modBoard = {
+  state: () => ({
     boardType: 'notice',
     noticeList: [
       {
@@ -40,7 +39,7 @@ export const modBoard = defineStore('board', {
         hit: 0
       }
     ]
-  },
+  }),
   mutations: {
     change__Type(state, payload) {
       state.boardType = payload
@@ -123,6 +122,4 @@ export const modBoard = defineStore('board', {
     fnGetNoticeList: (state) => state.noticeList,
     fnGetReviewList: (state) => state.reviewList
   }
-})
-
-export default modBoard
+}

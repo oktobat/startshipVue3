@@ -13,9 +13,12 @@
 </template>
 
 <script>
-import { computed, ref } from 'vue'
+import { ref, computed } from 'vue'
 export default {
   name: 'ActorSection',
+  props: {
+    keyword: String
+  },
   setup(props) {
     const actorWorks = ref([
       {
@@ -81,7 +84,7 @@ export default {
     ])
 
     const onSearch = computed(() => {
-      return actorWorks.filter(
+      return actorWorks.value.filter(
         (item) =>
           item.name.indexOf(props.keyword) > -1 ||
           item.genre.indexOf(props.keyword) > -1 ||

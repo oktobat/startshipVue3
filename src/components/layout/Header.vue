@@ -8,16 +8,16 @@
       <router-link to="/memberModify">정보수정({{ email }})</router-link>
     </div>
     <div class="member" v-else>
-      <router-link to="/">로그인</router-link>
-      <router-link to="/">회원가입</router-link>
+      <router-link to="/login">로그인</router-link>
+      <router-link to="/join">회원가입</router-link>
     </div>
     <div class="itemcount">
-      <router-link to="/">
+      <router-link to="/cart">
         <i class="fa-solid fa-cart-shopping"></i>
         <span>{{ itemCount }}</span>
       </router-link>
     </div>
-    <!-- <weather /> -->
+    <weather />
     <div class="openNav" @click="openNav">
       <span class="blind">메뉴 열기</span>
       <i class="fa-solid fa-bars"></i>
@@ -53,13 +53,15 @@
 
 <script>
 import { onMounted, ref, computed } from 'vue'
-// import Weather from '@/components/layout/Weather.vue'
+import { useStore } from 'vuex'
+import Weather from '@/components/layout/Weather.vue'
 export default {
   name: 'Header',
   components: {
-    // Weather
+    Weather
   },
   setup() {
+    const store = useStore()
     let open = ref(false)
     let email = ref('')
     let headerRef = ref(null)
@@ -70,28 +72,27 @@ export default {
     })
 
     const itemCount = computed(() => {
-      //   let set = new Set(store.getters.fnGetCarts)
-      //   let items = [...set]
-      //   return items.length
+      let set = new Set(store.getters.fnGetCarts)
+      let items = [...set]
+      return items.length
     })
     const token = computed(() => {
-      //   if (store.getters.fnGetLogined) {
-      //     email.value = store.getters.fnGetLogined.email
-      //     return true
-      //   } else {
-      //     return false
-      //   }
+      if (store.getters.fnGetLogined) {
+        email.value = store.getters.fnGetLogined.email
+        return true
+      } else {
+        return false
+      }
     })
 
     const openNav = () => {
-      open = true
+      open.value = true
     }
     const closeNav = () => {
-      open = false
+      open.value = false
     }
     const logOut = () => {
-      token = false
-      //   store.member.commit('fnLogout')
+      store.commit('fnLogout')
       // this.$router.push("/")
       window.location.reload()
     }

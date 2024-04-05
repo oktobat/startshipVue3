@@ -22,9 +22,9 @@ export default {
     ActorSection
   },
   setup() {
-    const actorTag = ref('')
+    let actorTag = ref('')
     const onSearch = (name) => {
-      actorTag = name
+      actorTag.value = name
     }
     return {
       actorTag,

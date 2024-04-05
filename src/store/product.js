@@ -1,11 +1,10 @@
 import axios from 'axios'
-import { defineStore } from 'pinia'
 
-export const modProduct = defineStore('product', {
-  state: {
+export const modProduct = {
+  state: () => ({
     products: [],
     carts: [] // [{id:0, qty:1}, {id:1, qty:2}]
-  },
+  }),
   mutations: {
     set__Store(state, payload) {
       state.products = payload
@@ -46,6 +45,4 @@ export const modProduct = defineStore('product', {
     fnGetProducts: (state) => state.products,
     fnGetCarts: (state) => state.carts
   }
-})
-
-export default modProduct
+}

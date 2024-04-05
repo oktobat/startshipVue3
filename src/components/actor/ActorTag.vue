@@ -18,8 +18,8 @@
 import { ref } from 'vue'
 export default {
   name: 'ActorTag',
-  setup({ emit }) {
-    const activeName = ref('')
+  setup(props, { emit }) {
+    let activeName = ref('')
     const actorName = ref([
       { name: '이동욱' },
       { name: '유연석' },
@@ -35,7 +35,7 @@ export default {
       { name: '손우현2' }
     ])
     const onClick = (name) => {
-      activeName = name
+      activeName.value = name
       emit('onSearch', name)
     }
     return {
