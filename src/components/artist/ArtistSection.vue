@@ -49,8 +49,8 @@ import { ref, onMounted, computed } from 'vue'
 export default {
   name: 'ArtistSection',
   setup() {
-    let ani = ref(true)
-    let activeButton = ref('팝 (Pop)')
+    const ani = ref(false)
+    const activeButton = ref('팝 (Pop)')
 
     const artistMenu = {
       menu1: '팝 (Pop)',
@@ -123,11 +123,11 @@ export default {
       activeButton.value = menu
     }
 
-    // onMounted(
-    //   setTimeout(() => {
-    //     ani.value = true
-    //   }, 10)
-    // )
+    onMounted(() => {
+      setTimeout(() => {
+        ani.value = true
+      }, 0)
+    })
 
     return {
       ani,

@@ -13,7 +13,7 @@ import { useStore } from 'vuex'
 export default {
   setup(props, { emit }) {
     const store = useStore()
-    let inputRef = ref('')
+    const inputRef = ref('')
 
     const onSearch = () => {
       if (inputRef.value) {

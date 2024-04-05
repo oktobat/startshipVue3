@@ -42,9 +42,9 @@ export default {
   },
   setup(props) {
     const store = useStore()
-    let flag = ref('')
-    let titleFlag = ref(false)
-    let items = ref([])
+    const flag = ref('')
+    const titleFlag = ref(false)
+    const items = ref([])
 
     const products = computed(() => {
       if (props.title == 'all') {

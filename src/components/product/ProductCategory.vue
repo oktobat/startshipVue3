@@ -16,7 +16,7 @@ import { ref } from 'vue'
 export default {
   setup(props, { emit }) {
     const category = ['all', 'woman', 'man', 'underwear', 'kids']
-    let ontitle = ref('all')
+    const ontitle = ref('all')
     const onClick = (name) => {
       emit('onChange', name)
       ontitle.value = name

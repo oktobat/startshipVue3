@@ -19,7 +19,7 @@ import { ref } from 'vue'
 export default {
   name: 'ActorTag',
   setup(props, { emit }) {
-    let activeName = ref('')
+    const activeName = ref('')
     const actorName = ref([
       { name: '이동욱' },
       { name: '유연석' },

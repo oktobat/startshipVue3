@@ -20,16 +20,10 @@ export default {
       emit('changeType', select)
       active.value = select
     }
-
     onMounted(() => {
       active.value = store.getters.fnGetBoardType
     })
-
-    return {
-      type,
-      active,
-      onClick
-    }
+    return { type, active, onClick }
   }
 }
 </script>

@@ -25,8 +25,8 @@ export default {
     const store = useStore()
     const router = useRouter()
 
-    let product = ref(null)
-    let showBtn = ref(false)
+    const product = ref(null)
+    const showBtn = ref(false)
 
     product.value = store.getters.fnGetProducts.find(
       (item) => item.id == router.currentRoute.value.params.id

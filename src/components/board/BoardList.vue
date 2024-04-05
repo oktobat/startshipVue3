@@ -41,7 +41,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
 export default {
-  props: ['type'],
+  props: { type: String },
   setup(props) {
     const store = useStore()
     const email = ref('')

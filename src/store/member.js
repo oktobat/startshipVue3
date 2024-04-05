@@ -31,7 +31,11 @@ export const modMember = {
       })
     },
     savePrevPath(state, payload) {
-      state.prevPath = payload
+      if (payload.indexOf('join') > 0) {
+        state.prevPath = '/'
+      } else {
+        state.prevPath = payload
+      }
     },
     fnLogout(state) {
       state.logined = null

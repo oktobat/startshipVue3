@@ -17,7 +17,7 @@ import { useStore } from 'vuex'
 export default {
   setup(props, { emit }) {
     const store = useStore()
-    let activeName = ref('인기 영화')
+    const activeName = ref('인기 영화')
     const movieType = [
       { name: '인기 영화', media: 'movie', type: 'popular' },
       { name: '현재 상영', media: 'movie', type: 'now_playing' },

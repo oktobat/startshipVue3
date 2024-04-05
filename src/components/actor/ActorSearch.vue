@@ -1,6 +1,11 @@
 <template>
   <div class="actor__search">
-    <input ref="inputRef" type="text" placeholder="검색어를 입력하세요." @keypress="onKeyPress" />
+    <input
+      v-model="inputRef"
+      type="text"
+      placeholder="검색어를 입력하세요."
+      @keypress="onKeyPress"
+    />
     <button type="button" @click="onClick">검색하기</button>
   </div>
 </template>
@@ -10,7 +15,7 @@ import { ref } from 'vue'
 export default {
   name: 'ActorSearch',
   setup(props, { emit }) {
-    let inputRef = ref('')
+    const inputRef = ref('')
 
     const onKeyPress = (event) => {
       if (event.key === 'Enter') {
@@ -23,10 +28,10 @@ export default {
     }
 
     const onSearch = () => {
-      console.log(inputRef.value.value)
-      if (inputRef.value.value) {
-        emit('onSearch', inputRef.value.value)
-        inputRef.value.value = ''
+      console.log(inputRef.value)
+      if (inputRef.value) {
+        emit('onSearch', inputRef.value)
+        inputRef.value = ''
       }
     }
 

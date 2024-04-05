@@ -65,9 +65,8 @@ import { useStore } from 'vuex'
 export default {
   setup() {
     const store = useStore()
-    let products = ref([])
-    let carts = ref([])
-
+    const products = ref([])
+    const carts = ref([])
     carts.value = store.getters.fnGetCarts
     console.log(carts.value)
     for (let i in carts.value) {

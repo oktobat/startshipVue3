@@ -62,9 +62,9 @@ export default {
   },
   setup() {
     const store = useStore()
-    let open = ref(false)
-    let email = ref('')
-    let headerRef = ref(null)
+    const open = ref(false)
+    const email = ref('')
+    const headerRef = ref(null)
 
     onMounted(() => {
       console.log('헤더높이 : ', headerRef.value.offsetHeight)
@@ -93,8 +93,8 @@ export default {
     }
     const logOut = () => {
       store.commit('fnLogout')
-      // this.$router.push("/")
-      window.location.reload()
+      router.push('/')
+      // window.location.reload()
     }
     return {
       open,
