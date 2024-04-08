@@ -1,17 +1,3 @@
-<template>
-  <div class="actor__wrap">
-    <ul>
-      <li v-for="(item, index) in onSearch" :key="index">
-        <a href="#">
-          <img :src="item.photo" :alt="item.title" />
-          <span>작품명 : {{ item.title }}</span>
-          <span>출연배우 : {{ item.name }} </span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</template>
-
 <script>
 import { ref, computed } from 'vue'
 export default {
@@ -99,6 +85,20 @@ export default {
   }
 }
 </script>
+
+<template>
+  <div class="actor__wrap">
+    <ul>
+      <li v-for="(item, index) in onSearch" :key="index">
+        <a href="#">
+          <img :src="item.photo" :alt="item.title" />
+          <span>작품명 : {{ item.title }}</span>
+          <span>출연배우 : {{ item.name }} </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .actor__wrap {

@@ -5,7 +5,7 @@
       <div class="option">
         <div>
           <form @submit.prevent="searchPlaces">
-            <input type="search" value="keyword" id="keyword" />
+            <input type="search" id="keyword" :value="keyword" />
             <button type="submit">검색</button>
           </form>
         </div>

@@ -1,49 +1,3 @@
-<template>
-  <section id="artistSection">
-    <h3 :class="{ on: ani }">{{ activeButton }}</h3>
-    <div class="artist__wrap">
-      <div class="artist__type">
-        <button
-          :class="{ active: activeButton == artistMenu.menu1 }"
-          @click="handleClick(artistMenu.menu1)"
-        >
-          {{ artistMenu.menu1 }}
-        </button>
-        <button
-          :class="{ active: activeButton == artistMenu.menu2 }"
-          @click="handleClick(artistMenu.menu2)"
-        >
-          {{ artistMenu.menu2 }}
-        </button>
-        <button
-          :class="{ active: activeButton == artistMenu.menu3 }"
-          @click="handleClick(artistMenu.menu3)"
-        >
-          {{ artistMenu.menu3 }}
-        </button>
-        <button
-          :class="{ active: activeButton == artistMenu.menu4 }"
-          @click="handleClick(artistMenu.menu4)"
-        >
-          {{ artistMenu.menu4 }}
-        </button>
-      </div>
-      <div class="artist__member">
-        <div class="member__info" v-for="(item, index) in activeArtist.artistInfo" :key="index">
-          <a :href="item.link">
-            <figure class="member__photo">
-              <img :src="item.artistImg" :alt="item.title" />
-            </figure>
-            <div class="member__desc">
-              <h4>{{ item.title }}</h4>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-</template>
-
 <script>
 import { ref, onMounted, computed } from 'vue'
 export default {
@@ -140,6 +94,52 @@ export default {
   }
 }
 </script>
+
+<template>
+  <section id="artistSection">
+    <h3 :class="{ on: ani }">{{ activeButton }}</h3>
+    <div class="artist__wrap">
+      <div class="artist__type">
+        <button
+          :class="{ active: activeButton == artistMenu.menu1 }"
+          @click="handleClick(artistMenu.menu1)"
+        >
+          {{ artistMenu.menu1 }}
+        </button>
+        <button
+          :class="{ active: activeButton == artistMenu.menu2 }"
+          @click="handleClick(artistMenu.menu2)"
+        >
+          {{ artistMenu.menu2 }}
+        </button>
+        <button
+          :class="{ active: activeButton == artistMenu.menu3 }"
+          @click="handleClick(artistMenu.menu3)"
+        >
+          {{ artistMenu.menu3 }}
+        </button>
+        <button
+          :class="{ active: activeButton == artistMenu.menu4 }"
+          @click="handleClick(artistMenu.menu4)"
+        >
+          {{ artistMenu.menu4 }}
+        </button>
+      </div>
+      <div class="artist__member">
+        <div class="member__info" v-for="(item, index) in activeArtist.artistInfo" :key="index">
+          <a :href="item.link">
+            <figure class="member__photo">
+              <img :src="item.artistImg" :alt="item.title" />
+            </figure>
+            <div class="member__desc">
+              <h4>{{ item.title }}</h4>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
 
 <style lang="scss" scoped>
 #artistSection {

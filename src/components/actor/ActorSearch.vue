@@ -1,3 +1,27 @@
+<script setup>
+import { ref } from 'vue'
+const emit = defineEmits(['onSearch'])
+const inputRef = ref('')
+
+function onKeyPress(event) {
+  if (event.key === 'Enter') {
+    onSearch()
+  }
+}
+
+function onClick() {
+  onSearch()
+}
+
+function onSearch() {
+  console.log(inputRef.value)
+  if (inputRef.value) {
+    emit('onSearch', inputRef.value)
+    inputRef.value = ''
+  }
+}
+</script>
+
 <template>
   <div class="actor__search">
     <input
@@ -9,41 +33,6 @@
     <button type="button" @click="onClick">검색하기</button>
   </div>
 </template>
-
-<script>
-import { ref } from 'vue'
-export default {
-  name: 'ActorSearch',
-  setup(props, { emit }) {
-    const inputRef = ref('')
-
-    const onKeyPress = (event) => {
-      if (event.key === 'Enter') {
-        onSearch()
-      }
-    }
-
-    const onClick = () => {
-      onSearch()
-    }
-
-    const onSearch = () => {
-      console.log(inputRef.value)
-      if (inputRef.value) {
-        emit('onSearch', inputRef.value)
-        inputRef.value = ''
-      }
-    }
-
-    return {
-      inputRef,
-      onKeyPress,
-      onClick,
-      onSearch
-    }
-  }
-}
-</script>
 
 <style lang="scss" scoped>
 .actor__search {
