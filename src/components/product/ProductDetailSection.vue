@@ -28,9 +28,7 @@ export default {
     const product = ref(null)
     const showBtn = ref(false)
 
-    product.value = store.getters.fnGetProducts.find(
-      (item) => item.id == router.currentRoute.value.params.id
-    )
+    product.value = router.currentRoute.value.params.item
     if (store.getters.fnGetLogined) {
       showBtn.value = true
     } else {

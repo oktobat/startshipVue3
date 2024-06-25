@@ -7,7 +7,7 @@
     <transition-group name="translist" tag="ul" class="ulbox">
       <li v-for="item in products" :key="item.id">
         <div class="photo">
-          <router-link :to="{ name: 'Id', params: { id: item.id } }"
+          <router-link :to="{ name: 'Id', params: { item: item } }"
             ><img :src="item.image" alt=""
           /></router-link>
         </div>
